@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>实验室人脸识别系统</title>
+    <link rel="icon" type="image/x-icon" href="/static/favorite.ico" />
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- FooTable -->
+    <link href="/static/css/plugins/footable/footable.core.css" rel="stylesheet">
+    
+    <link href="/static/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+    
+    <link href="/static/css/plugins/dropzone/basic.css" rel="stylesheet">
+    <link href="/static/css/plugins/dropzone/dropzone.css" rel="stylesheet">
+    <link href="/static/css/plugins/codemirror/codemirror.css" rel="stylesheet">
+
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="/static/img/a6.jpg" />
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">用户名：{{ req.session.uname }}</strong>
+                             </span> <span class="text-muted text-xs block">导航<b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="profile.html">查看签到</a></li>
+                                <li><a href="/myWork">查看任务</a></li>
+                                <li class="divider"></li>
+                                <li><a href="login.html">登出</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            	人脸识别
+                        </div>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">签到系统</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="index.html">查看当日签到</a></li>
+                            <li><a href="qingjia.html">请假</a></li>
+                            <li><a href="monthqiandao.html">本月签到查看</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">任务查看</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/allTask">领取任务</a></li>
+                            <li  class="active"><a href="/myWork">我的任务</a></li>
+                           
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+		        <div class="navbar-header">
+		            <a class="navbar-minimalize minimalize-styl-2 btn btn-success " href="#"><i class="fa fa-bars"></i> </a>
+		            <form role="search" class="navbar-form-custom" action="search_results.html">
+		                <div class="form-group">
+		                    <input type="text" placeholder="查找" class="form-control" name="top-search" id="top-search">
+		                </div>
+		            </form>
+		        </div>
+		            <ul class="nav navbar-top-links navbar-right">
+		                <li>
+		                    <span class="m-r-sm text-muted welcome-message">欢迎来到人脸识别系统</span>
+		                </li>
+		                <li class="dropdown">
+		                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+		                        <i class="fa fa-envelope"></i>  <span class="label label-warning">6</span>
+		                    </a>
+		                    <ul class="dropdown-menu dropdown-messages">
+		                        <li>
+		                            <div class="dropdown-messages-box">
+		                                <div class="media-body">
+		                                    <small class="pull-right text-navy">2018年8月17日</small>
+		                                    <strong>钱叶</strong> 打入冷宫<strong>以示正听</strong>. <br>
+		                                    <small class="text-muted">3天内完成</small>
+		                                </div>
+		                            </div>
+		                        </li>
+		                        <li class="divider"></li>
+		                        <li>
+		                            <div class="dropdown-messages-box">
+		                                <div class="media-body ">
+		                                    <small class="pull-right text-navy">2018年8月19日</small>
+		                                    <strong>杨忠光</strong> 帮大家 <strong>洗衣服</strong>. <br>
+		                                    <small class="text-muted">2个小时内完成</small>
+		                                </div>
+		                            </div>
+		                        </li>
+		                        <li class="divider"></li>
+		                        <li>
+		                            <div class="dropdown-messages-box">
+		                                <div class="media-body ">
+		                                    <small class="pull-right text-navy">2018年8月1日</small>
+		                                    <strong>沈朦瑶</strong> 帮大家<strong>买早饭</strong>. <br>
+		                                    <small class="text-muted">当天完成</small>
+		                                </div>
+		                            </div>
+		                        </li>
+		                        <li class="divider"></li>
+		                        <li>
+		                            <div class="text-center link-block">
+		                                <a href="allTask.html">
+		                                    <i class="fa fa-envelope"></i> <strong>查看全部任务</strong>
+		                                </a>
+		                            </div>
+		                        </li>
+		                    </ul>
+		                </li>
+		
+		                <li>
+		                    <a href="login.html">
+		                        <i class="fa fa-sign-out"></i> 注销
+		                    </a>
+		                </li>
+		            </ul>
+		
+		        </nav>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+           <div class="row">
+                <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>我的任务进度上传</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+	                        <div class="form-group col-sm-3">
+
+	                            <select name="status" id="status" class="form-control">
+                                    {% for task in tasks %}
+	                                <option value={{ task.tid }} selected>{{ task.sname }}</option>
+	                                {% endfor %}
+	                            </select>
+	                        </div>
+
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <span class="btn btn-default btn-file"><span class="fileinput-new">点击查找上传文件</span><span class="fileinput-exists">更改</span><input type="file" name="..." id="file_upload"></span>
+                                <span class="fileinput-filename"></span>
+                                <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+                            </div>
+
+                            <div class="col-sm-2 text-right">
+                            	<button class="btn btn-success upload" onclick="FileUpload()">上传</button>
+                            </div>
+                        </div>
+
+                    </div>
+           </div>
+
+            {% for task in tasks %}
+           <div class="row">
+		       <div class="ibox float-e-margins">
+					<div class="ibox-title">
+		                <h5>我的任务进度</h5>
+		                <div class="ibox-tools">
+		                    <a class="collapse-link">
+		                        <i class="fa fa-chevron-up"></i>
+		                    </a>
+		                    <a class="close-link">
+		                        <i class="fa fa-times"></i>
+		                    </a>
+		                </div>
+		            </div>
+		            <div class="ibox-content">
+			                <div class="row">
+			                    <div class="col-lg-12">
+			                        <div class="m-b-md">
+			                            <button  class="btn btn-white btn-xs pull-right" id="eachWork" name="{{task.sid }}" onclick="eachWork()">编辑这个项目</button>
+			                            <h2>{{ task.sname }}</h2>
+			                        </div>
+                                    <div class="row">
+                                        <div class="col-lg-5">
+                                        <dl class="dl-horizontal">
+                                            <dt>任务编号:</dt> <dd></a><span class="label label-success" >{{task.sid }}</span></dd>
+			                            </dl>
+                                        </div>
+                                        <div class="col-lg-7">
+			                            <dl class="dl-horizontal">
+                                            <dt>状态:</dt> <dd></a><span class="label label-success">{{task.finish }}</span></dd>
+			                            </dl>
+                                        </div>
+			                        </div>
+                                </div>
+			                </div>
+			                <div class="row">
+			                    <div class="col-lg-5">
+			                        <dl class="dl-horizontal">
+			
+			                            <dt>工分:</dt> <dd>{{task.value }}</dd>
+			                            <dt>任务:</dt> <dd>{{task.content }}</dd>
+
+			                        </dl>
+			                    </div>
+			                    <div class="col-lg-7" id="cluster_info">
+			                        <dl class="dl-horizontal" >
+			
+			                            <dt>立项时间:</dt> <dd>{{ task.start_time }}</dd>
+			                            <dt>交项时间:</dt> <dd>{{ task.end_time }}</dd>
+			                        </dl>
+			                    </div>
+			                </div>
+			                <div class="row">
+			                    <div class="col-lg-12">
+			                        <dl class="dl-horizontal">
+			                            <dt>进度:</dt>
+			                            <dd>
+			                                <div class="progress progress-striped active m-b-sm">
+			                                    <div style="width: {{ task.progress }}%;" class="progress-bar"></div>
+			                                </div>
+			                                <small>该任务已经完成了<strong>{{ task.progress }}%</strong>。</small>
+			                            </dd>
+			                        </dl>
+			                    </div>
+			                </div>
+		            </div>
+				</div>
+	        </div>
+	        {% endfor %}
+
+        </div>
+
+
+
+    <!-- Mainly scripts -->
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/static/js/inspinia.js"></script>
+    <script src="/static/js/plugins/pace/pace.min.js"></script>
+
+    <!-- FooTable -->
+    <script src="/static/js/plugins/footable/footable.all.min.js"></script>
+    <script src="/static/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+
+    <!-- DROPZONE -->
+    <script src="/static/js/plugins/dropzone/dropzone.js"></script>
+
+    <!-- CodeMirror -->
+    <script src="/static/js/plugins/codemirror/codemirror.js"></script>
+    <script src="/static/js/plugins/codemirror/mode/xml/xml.js"></script>
+
+    <!-- Page-Level Scripts -->
+    <script>
+        
+        $(document).ready(function() {
+        	
+        	$('.footable').footable();
+        	
+            
+        });
+        
+       function FileUpload() {
+            var form_data = new FormData();
+
+            var task_id = document.getElementById("status").value
+            var file_info =$( '#file_upload')[0].files[0];
+            form_data.append('file',file_info);
+            form_data.append('tid',task_id)
+            //if(file_info==undefined)暂且不许要判断是否有附件
+                //alert('你没有选择任何文件');
+                //return false
+            $.ajax({
+                url:'/upload_ajax/',
+                type:'POST',
+                data: form_data,
+                processData: false,  // tell jquery not to process the data
+                contentType: false, // tell jquery not to set contentType
+                success: function(callback) {
+                    alert('上传成功')
+                    console.log('ok')
+                }
+            });
+       }
+        function eachWork() {
+
+           $.ajax({
+				type : "POST",
+				dataType : "json",
+				data : {
+					"sid" :document.getElementById("eachWork").name
+				},
+				url : "/getWorkId/",
+               success : function(data) {
+					if(data.res==1){
+						location.href='/eachWork/';
+					}
+                    else if(data.res==100){
+						alert("错误");
+					}
+				},
+				error:function(a,b,c){
+				  var i = 1;
+				}
+
+			});
+
+        }
+
+    </script>
+
+</body>
+
+</html>

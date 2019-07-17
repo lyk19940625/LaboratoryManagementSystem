@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>实验室人脸识别系统</title>
+    <link rel="icon" type="image/x-icon" href="favorite.ico" />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- FooTable -->
+    
+    <link href="css/plugins/footable/footable.core.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    
+    <link href="css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="img/a6.jpg" />
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">用户名</strong>
+                             </span> <span class="text-muted text-xs block">导航<b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="profile.html">查看签到</a></li>
+                                <li><a href="contacts.html">查看任务</a></li>
+                                <li class="divider"></li>
+                                <li><a href="login.html">登出</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                                                        人脸识别
+                        </div>
+                    </li>
+                    <li class="active">
+                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">签到系统</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="index.html">查看当日签到</a></li>
+                            <li class="active"><a href="qingjia.html">请假</a></li>
+                            <li><a href="monthqiandao.html">本月签到查看</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">任务查看</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="allTask.html">领取任务</a></li>
+                            <li><a href="myWork.html">我的任务</a></li>
+                           
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+		        <div class="navbar-header">
+		            <a class="navbar-minimalize minimalize-styl-2 btn btn-success " href="#"><i class="fa fa-bars"></i> </a>
+		            <form role="search" class="navbar-form-custom" action="search_results.html">
+		                <div class="form-group">
+		                    <input type="text" placeholder="查找" class="form-control" name="top-search" id="top-search">
+		                </div>
+		            </form>
+		        </div>
+		            <ul class="nav navbar-top-links navbar-right">
+		                <li>
+		                    <span class="m-r-sm text-muted welcome-message">欢迎来到人脸识别系统</span>
+		                </li>
+		                <li class="dropdown">
+		                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+		                        <i class="fa fa-envelope"></i>  <span class="label label-warning">6</span>
+		                    </a>
+		                    <ul class="dropdown-menu dropdown-messages">
+		                        <li>
+		                            <div class="dropdown-messages-box">
+		                                <div class="media-body">
+		                                    <small class="pull-right text-navy">2018年8月17日</small>
+		                                    <strong>钱叶</strong> 打入冷宫<strong>以示正听</strong>. <br>
+		                                    <small class="text-muted">3天内完成</small>
+		                                </div>
+		                            </div>
+		                        </li>
+		                        <li class="divider"></li>
+		                        <li>
+		                            <div class="dropdown-messages-box">
+		                                <div class="media-body ">
+		                                    <small class="pull-right text-navy">2018年8月19日</small>
+		                                    <strong>杨忠光</strong> 帮大家 <strong>洗衣服</strong>. <br>
+		                                    <small class="text-muted">2个小时内完成</small>
+		                                </div>
+		                            </div>
+		                        </li>
+		                        <li class="divider"></li>
+		                        <li>
+		                            <div class="dropdown-messages-box">
+		                                <div class="media-body ">
+		                                    <small class="pull-right text-navy">2018年8月1日</small>
+		                                    <strong>沈朦瑶</strong> 帮大家<strong>买早饭</strong>. <br>
+		                                    <small class="text-muted">当天完成</small>
+		                                </div>
+		                            </div>
+		                        </li>
+		                        <li class="divider"></li>
+		                        <li>
+		                            <div class="text-center link-block">
+		                                <a href="allTask.html">
+		                                    <i class="fa fa-envelope"></i> <strong>查看全部任务</strong>
+		                                </a>
+		                            </div>
+		                        </li>
+		                    </ul>
+		                </li>
+		
+		                <li>
+		                    <a href="login.html">
+		                        <i class="fa fa-sign-out"></i> 注销
+		                    </a>
+		                </li>
+		            </ul>
+		
+		        </nav>
+        </div>
+            
+
+        <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+
+
+            <div class="ibox-content m-b-sm border-bottom">
+                <div class="row">
+                    <div class="form-group col-sm-4" id="data_5">
+                                <label class="control-label">请选择日期</label>
+                                <div class="input-daterange input-group" id="datepicker">
+                                    <input type="text" class="form-control" name="start"/>
+                                    <span class="input-group-addon">到</span>
+                                    <input type="text" class="form-control" name="end" />
+                                </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+		                   <label class="control-label">请选择时间</label>
+		                   <div class="input-daterange input-group">
+			                    <div class="input-group clockpicker" data-autoclose="true">
+				                    <input type="text" class="form-control">
+			                    </div>
+			                    <span class="input-group-addon">到</span>
+			                    <div class="input-group clockpicker" data-autoclose="true">
+			                        <input type="text" class="form-control">
+			                    </div>
+			                </div>
+	                </div>
+	                <div class="col-sm-2">
+                        <div class="form-group">
+                            <label class="control-label" for="status">选择请假原因</label>
+                            <select name="status" id="status" class="form-control">
+                                <option value="1" selected>七天无理由请假</option>
+                                <option value="0">肚子疼</option>
+                                <option value="2">谈恋爱</option>
+                                <option value="3">出差</option>
+                                <option value="4">回家</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                    	<button class="btn btn-success btn-rounded dim qingjia">确认请假</button>
+                    </div>
+                   
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-content">
+
+                            <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                                <thead>
+                                <tr>
+
+                                    <th>学号</th>
+                                    <th data-hide="phone">姓名</th>
+                                    <th data-hide="phone">请假原因</th>
+                                    <th data-hide="phone">请假开始</th>
+                                    <th data-hide="phone,tablet" >请假结束</th>
+                                    <th data-hide="phone">请假时长</th>
+                                    <th class="text-right">是否审核通过</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                       123456
+                                    </td>
+                                    <td>
+                                        	沈朦瑶
+                                    </td>
+                                    <td>
+                                        	七天无理由请假
+                                    </td>
+                                    <td>
+                                        2018年8月10日
+                                    </td>
+                                    <td>
+                                        2019年1月1日
+                                    </td>
+                                    <td>
+                                        365天3小时6分
+                                    </td>
+                                    <td class="text-right">
+                                        <label class="badge badge-success">通过</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                       123456
+                                    </td>
+                                    <td>
+                                        	沈朦瑶
+                                    </td>
+                                    <td>
+                                        	七天无理由请假
+                                    </td>
+                                    <td>
+                                        2018年8月10日
+                                    </td>
+                                    <td>
+                                        2019年1月1日
+                                    </td>
+                                    <td>
+                                        365天3小时6分
+                                    </td>
+                                    <td class="text-right">
+                                        <label class="badge badge-danger">未通过</label>
+                                    </td>
+                                </tr>
+                                
+
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="7">
+                                        <ul class="pagination pull-right"></ul>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        </div>
+        </div>
+
+
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- Data picker -->
+    <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    
+    <script src="js/plugins/clockpicker/clockpicker.js"></script>
+    <script src="js/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- FooTable -->
+    <script src="js/plugins/footable/footable.all.min.js"></script>
+
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function() {
+
+            $('.footable').footable();
+            
+            $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+            
+            $('.请假').click(function () {
+	        swal({
+		        title: "真的要请假吗",
+		        text: "你确定请假吗",
+		        type: "warning",
+		        showCancelButton: true,
+		        confirmButtonColor: "#DD6B55",
+		        confirmButtonText: "是的！！",
+		        closeOnConfirm: false
+	    		}, function () {
+	        		swal("好的", "恭喜你请假成功", "success");
+	    			});
+		    });
+            
+            $('.clockpicker').clockpicker();
+           
+
+        });
+
+    </script>
+
+</body>
+
+</html>

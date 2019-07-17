@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>实验室人脸识别系统</title>
+    <link rel="icon" type="image/x-icon" href="/static/favorite.ico" />
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/static/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-img">
+
+    <div class="middle-box text-center loginscreen   animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name"><a href="http://www.shiep.edu.cn/"  target="_blank" ><img class="school-img"/></a></h1>
+
+            </div>
+            <h3>注册账号</h3>
+            <form class="m-t" role="form" action="login.html">
+               <div class="form-group">
+                    <input type="text" class="form-control" id="uid" placeholder="账号" name="uid" >
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="uname" placeholder="用户名" name="uname" >
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="密码" name="password" >
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="type" placeholder="类型" name="type" >
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="room" placeholder="实验室" name="room" >
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="sex" placeholder="性别" name="sex" >
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="class_field" placeholder="班级" name="class" >
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="birthday" placeholder="生日" name="birthday" >
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="tel" placeholder="联系方式" name="tel" >
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="email" placeholder="邮箱" name="email" >
+                </div>
+                <div class="form-group">
+                        <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> 同意用户协议</label></div>
+                </div>
+                <button type="button" id="submit" class="btn btn-primary block full-width m-b">注册</button>
+
+                <p class="text-muted text-center"><small>已有账号？</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="/">登录</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <!-- iCheck -->
+    <script src="/static/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+    <script type="text/javascript">
+
+    	$("#submit").click(function() {
+    		$.ajax({
+    			type:"POST",
+    			dataType : "json",
+    			data : {
+    			    "uid" : $("#uid").val(),
+					"uname" : $("#uname").val(),
+					"password" : $("#password").val(),
+                    "type" : $("#type").val(),
+					"room" : $("#room").val(),
+					"sex" : $("#sex").val(),
+                    "class_field" : $("#class_field").val(),
+					"birthday" : $("#birthday").val(),
+					"tel" : $("#tel").val(),
+                    "email" : $("#email").val(),
+
+				},
+
+				url : "/register/",
+				success : function(data) {
+					if(data.res==0){
+						location.href='/';
+					}
+					else if(data.res==1){
+						layer.msg("用户已存在！",{icon:1});
+					}
+					else if(data.res==100){
+						layer.msg("方法错误！",{icon:0})
+					}
+				},
+				error:function(a,b,c){
+				  var i = 1;
+				}
+    		})
+    	})
+    </script>
+</body>
+
+</html>
